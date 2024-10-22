@@ -540,7 +540,7 @@ async def run_server(args, **uvicorn_kwargs) -> None:
     # workaround to make sure that we bind the port before the engine is set up.
     # This avoids race conditions with ray.
     # see https://github.com/vllm-project/vllm/issues/8204
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
     sock.bind(("", args.port))
 
     def signal_handler(*_) -> None:
