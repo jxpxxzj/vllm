@@ -530,13 +530,13 @@ def create_server_socket() -> socket.socket:
         try:
             sock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
         except socket.error as e:
-            logger.warning(f"Failed to disable IPV6_V6ONLY"
+            logger.warning("Failed to disable IPV6_V6ONLY"
                            "for server socket: %s", e)
         
         # still return this socket when IPV6_V6ONLY is not supported
         return sock
     except socket.error as e:
-        logger.warning(f"Failed to create dualstack socket: %s,"
+        logger.warning("Failed to create dualstack socket: %s,"
                        "use AF_INET for compatibility", e)
 
     # fallback to AF_INET for compatibility
